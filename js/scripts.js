@@ -1,4 +1,4 @@
-function add_slide()
+function addSlide()
 {
     var url = '?plugin=slider&action=addslide';
             return  $.get(url, function(result) {

@@ -1,1 +1,38 @@
+{if $sliders}
+<table id="sliders-list" class="zebra">
+    <tbody><tr class="header">
+            <th class="min-width">
+                <input type="checkbox" class="s-select-all">
+            </th>
+            <th>
+                Название
+            </th>
+            <th class="short align-right">
+
+            </th>
+            <th class="short align-right">
+
+            </th>
+        </tr>
+    </tbody>
+
+{foreach from=$sliders item=slider}
+    <tr>
+        <td class="min-width">
+            <input type="checkbox">
+        </td>
+        <td>
+            <a href="#/addslider/{$slider.id}/">{$slider.name}</a>
+        </td>
+        <td class="short nowrap align-right"><span>$10...$20</span></td>
+        <td class="short nowrap align-right">
+            <span><span class="gray">∞</span></span>
+        </td>
+    </tr>
+{/foreach}
+
+
+</table>
+{else}
 Список пуст
+{/if}
