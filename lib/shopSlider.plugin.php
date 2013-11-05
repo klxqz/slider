@@ -17,16 +17,17 @@ class shopSliderPlugin extends shopPlugin {
             
             $slider_model = new shopSliderModel();
             $slider = $slider_model->getById($slider_id);
+            if($slider['enabled']) {
+                $slide_model = new shopSliderSlideModel();
+                $slides = $slide_model->getByField('slider_id',$slider_id,true);
+
+                $view->assign('slider',$slider);
+                $view->assign('slides',$slides);
+                $template_path = wa()->getAppPath('plugins/slider/templates/Slider.html', 'shop');
+                $html = $view->fetch($template_path);
+                return $html;
+            }
             
-            $slide_model = new shopSliderSlideModel();
-            $slides = $slide_model->getByField('slider_id',$slider_id,true);
-            
-            //$view->assign('settings',$up->getSettings());
-            $view->assign('slider',$slider);
-            $view->assign('slides',$slides);
-            $template_path = wa()->getAppPath('plugins/slider/templates/Slider.html', 'shop');
-            $html = $view->fetch($template_path);
-            return $html;
         }
     }
 

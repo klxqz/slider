@@ -1,6 +1,6 @@
 <?php
 
-class shopSliderPluginBackendSlidesAction extends waViewAction
+class shopSliderPluginBackendSlidersAction extends waViewAction
 {
     public function execute()
     {
