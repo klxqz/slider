@@ -10,8 +10,8 @@
         <div class="name">Доступен</div>
         <div class="value">
             <select name="slider[enabled]">
-                <option {if $slider.enabled==0}selected="selected"{/if} value="0">Нет</option>
                 <option {if $slider.enabled==1}selected="selected"{/if} value="1">Да</option>
+                <option {if $slider.enabled==0}selected="selected"{/if} value="0">Нет</option>
             </select>
 
         </div>
@@ -20,9 +20,151 @@
         <div class="name">Название слайдера</div>
         <div class="value"><input type="text" name="slider[name]" value="{$slider.name}" class="long bold" /></div>
     </div>
+    
+    <div class="field">
+        <div class="name">Тема оформления</div>
+        <div class="value">
+            <select name="slider[theme]">
+                <option {if $slider.theme=='bar'}selected="selected"{/if} value="bar">bar</option>
+                <option {if $slider.theme=='dark'}selected="selected"{/if} value="dark">dark</option>
+                <option {if $slider.theme=='default'}selected="selected"{/if} value="default">default</option>
+                <option {if $slider.theme=='light'}selected="selected"{/if} value="light">light</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="field">
+        <div class="name">Эффект</div>
+        <div class="value">
+            <select name="slider[effect]">
+                {foreach from = $effect_params item = effect_param}
+                <option {if $slider.effect==$effect_param}selected="selected"{/if} value="{$effect_param}">{$effect_param}</option>
+                {/foreach}
+            </select>
+        </div>
+    </div>
+    
+    <div class="field">
+        <div class="name">Количество ломтиков при анимации</div>
+        <div class="value">
+            <input name="slider[slices]" value="{$slider.slices}"/>
+        </div>
+    </div>
+    
+    <div class="field">
+        <div class="name">Количество столбцов при анимации</div>
+        <div class="value">
+            <input name="slider[boxCols]" value="{$slider.boxCols}"/>
+        </div>
+    </div>
+    
+    <div class="field">
+        <div class="name">Количество строк при анимации</div>
+        <div class="value">
+            <input name="slider[boxRows]" value="{$slider.boxRows}"/>
+        </div>
+    </div>
+    
+    <div class="field">
+        <div class="name">Скорость анимации</div>
+        <div class="value">
+            <input name="slider[animSpeed]" value="{$slider.animSpeed}"/>
+        </div>
+    </div>
+    
+    <div class="field">
+        <div class="name">Количество времени на показ слайда</div>
+        <div class="value">
+            <input name="slider[pauseTime]" value="{$slider.pauseTime}"/>
+        </div>
+    </div>
+    
+    <div class="field">
+        <div class="name">Номер слайда, с которого начинается пока</div>
+        <div class="value">
+            <input name="slider[startSlide]" value="{$slider.startSlide}"/>
+        </div>
+    </div>
 
+    <div class="field">
+        <div class="name">Отображение кнопок "вперед" "назад"</div>
+        <div class="value">
+            <select name="slider[directionNav]">
+                <option {if $slider.directionNav=='1'}selected="selected"{/if} value="1">Да</option>
+                <option {if $slider.directionNav=='0'}selected="selected"{/if} value="0">Нет</option>
 
+            </select>
+        </div>
+    </div>
+    
+    <div class="field">
+        <div class="name">Отображение навигации</div>
+        <div class="value">
+            <select name="slider[controlNav]">
+                <option {if $slider.controlNav=='1'}selected="selected"{/if} value="1">Да</option>
+                <option {if $slider.controlNav=='0'}selected="selected"{/if} value="0">Нет</option>
 
+            </select>
+        </div>
+    </div>
+    
+    <div class="field">
+        <div class="name">Использование миниатюр</div>
+        <div class="value">
+            <select name="slider[controlNavThumbs]">
+                <option {if $slider.controlNavThumbs=='1'}selected="selected"{/if} value="1">Да</option>
+                <option {if $slider.controlNavThumbs=='0'}selected="selected"{/if} value="0">Нет</option>
+
+            </select>
+        </div>
+    </div>
+    
+    <div class="field">
+        <div class="name">Остановка анимации при наведение</div>
+        <div class="value">
+            <select name="slider[pauseOnHover]">
+                <option {if $slider.pauseOnHover=='1'}selected="selected"{/if} value="1">Да</option>
+                <option {if $slider.pauseOnHover=='0'}selected="selected"{/if} value="0">Нет</option>
+
+            </select>
+        </div>
+    </div>
+    
+    <div class="field">
+        <div class="name">Ручное управление</div>
+        <div class="value">
+            <select name="slider[manualAdvance]">
+                <option {if $slider.manualAdvance=='1'}selected="selected"{/if} value="true">Да</option>
+                <option {if $slider.manualAdvance=='0'}selected="selected"{/if} value="false">Нет</option>
+
+            </select>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="name">Текст кнопки "назад"</div>
+        <div class="value">
+            <input name="slider[prevText]" value="{$slider.prevText}"/>
+        </div>
+    </div>
+    
+    <div class="field">
+        <div class="name">Текст кнопки "вперед"</div>
+        <div class="value">
+            <input name="slider[nextText]" value="{$slider.nextText}"/>
+        </div>
+    </div>
+    
+    <div class="field">
+        <div class="name">Начинать показ со случаенного слайда</div>
+        <div class="value">
+            <select name="slider[randomStart]">
+                <option {if $slider.randomStart=='1'}selected="selected"{/if} value="1">Да</option>
+                <option {if $slider.randomStart=='0'}selected="selected"{/if} value="0">Нет</option>
+
+            </select>
+        </div>
+    </div>
 
 
 

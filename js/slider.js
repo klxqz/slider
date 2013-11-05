@@ -127,7 +127,9 @@
             this.actionName = actionName;
         },
         defaultAction: function() {
-            this.load('?plugin=slider&action=slides');
+            this.load('?plugin=slider&action=sliders',function(){
+                $.slider.deleteSlidersInit();
+            });
         },
         addsliderAction: function(id) {
            
@@ -155,7 +157,6 @@
                 $('.loading').remove();         
                 $('.slider-slide-content').append(result);
                 $.slider.fileUploadInit();
-            
                 $.slider.deleteSlideInit();
                 
             });
@@ -190,6 +191,29 @@
                     },
                 });  
         },
+        
+        
+        deleteSlidersInit: function()
+        {
+            $('.delete-sliders-but').click(function(){
+                    var $form = $('.sliders-form');  
+                    $.ajax({
+                        type: 'POST',
+                        url: $form.attr('action'),
+                        data: $form.serializeArray(),
+                        dataType: 'json',
+                        success: function(data, textStatus, jqXHR) {
+                            
+                            $.slider.message(data,{content: $('.del-sliders-result')});
+                            if(data.status=='ok') {
+                                $.slider.defaultAction();
+                            }
+                        },
+                        error: function(jqXHR, errorText) {
+                        }
+                    });
+                });
+        },
         deleteSlideInit: function()
         {
             $('.delete-slide-but').click(function(){
@@ -208,8 +232,6 @@
                             } else if(data.status=='fail'){
                                 $.slider.message(data,{content: $form.find('.del-slide-result')});
                             }
-                            
-
                         },
                         error: function(jqXHR, errorText) {
                         }
@@ -229,8 +251,10 @@
                 dataType: 'json',
                 success: function(data, textStatus, jqXHR) {
                     $.slider.message(data);
+                    if(data.data && data.data.id) {
+                        $('#slider_id').val(data.data.id);
+                    }
                     
-                    console.log(data);
 
                 },
                 error: function(jqXHR, errorText) {

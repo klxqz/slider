@@ -1,0 +1,45 @@
+{if $sliders}
+<form action="?plugin=slider&action=deletesliders" class="sliders-form">
+    <table id="sliders-list" class="zebra">
+        <tbody><tr class="header">
+                <th class="min-width">
+                    <input type="checkbox" class="slider-select-all">
+                </th>
+                <th>
+                    Название
+                </th>
+                <th class="short align-right">
+
+                </th>
+                <th class="short align-right">
+
+                </th>
+            </tr>
+        </tbody>
+
+        {foreach from=$sliders item=slider}
+        <tr>
+            <td class="min-width">
+                <input type="checkbox" name="slider_ids[]" value="{$slider.id}">
+            </td>
+            <td>
+                <a href="#/addslider/{$slider.id}/">{$slider.name}</a>
+            </td>
+            <td class="short nowrap align-right"><span>$10...$20</span></td>
+            <td class="short nowrap align-right">
+                <span><span class="gray">∞</span></span>
+            </td>
+        </tr>
+        {/foreach}
+
+
+    </table>
+</form>
+<div class="block">
+    <a class="delete-sliders-but" href="javascript:void(0);"><i class="icon16 delete"></i>Удалить выбранные</a>
+    <span class="del-sliders-result"></span>
+</div>
+
+{else}
+Список пуст
+{/if}
