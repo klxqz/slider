@@ -38,7 +38,8 @@
                 title: '',
                 hash: ''
             };
-
+            
+            
         },
         // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
         // *   Dispatch-related
@@ -138,10 +139,84 @@
                     $.slider.saveHandler(this);
                     return false;
                 });
-            });
-          
-            
+                $('.add-slide-but').click($.slider.addSlide);
+                $.slider.fileUploadInit();
+                $.slider.deleteSlideInit();
+            }); 
         },
+        
+        addSlide: function() {
+            var options = {content: $('.slider-slide-content')};
+            var slider_id = $('#slider_id').val();
+            var url = '?plugin=slider&action=addslide&slider_id=' + slider_id;
+       
+            $('.slider-slide-content').append('<div class="loading"><i class="icon16 loading"></i>Loading...</div>');
+            return  $.get(url, function(result) {
+                $('.loading').remove();         
+                $('.slider-slide-content').append(result);
+                $.slider.fileUploadInit();
+            
+                $.slider.deleteSlideInit();
+                
+            });
+        },
+        
+        fileUploadInit: function()
+        {
+            $('.fileupload').fileupload({
+                    url: '?plugin=slider&action=saveslideimage',
+                    dataType: 'json',
+                
+                    done: function (e, data) {  
+                        $(this).parent().find('.slide-result').html('');                       
+                        $('.loading').remove();
+                        if(data.result.data) {
+                            console.log(data.result.data);
+                            $(this).closest('.value').find(".preview").html('<img src="'+data.result.data.preview+'" />');
+                            if(data.result.data.id) {
+                                $(this).closest('.slider-slide-form').find(".slide_id").val(data.result.data.id);
+                            }
+                            
+                        } else {
+                            $.slider.message(data.result,{content: $(this).parent().find('.slide-result')});
+                        }
+                    },        
+                    fail: function (e, data) {     
+                        $('.loading').remove();
+                        $.slider.message(data.result,{content: $(this).parent().find('.slide-result')});
+                    },
+                    start: function (e, data) { 
+                            $(this).parent().append('<span class="loading"><i class="icon16 loading"></i>Loading...</span>');
+                    },
+                });  
+        },
+        deleteSlideInit: function()
+        {
+            $('.delete-slide-but').click(function(){
+                    var $form = $(this).closest('.slider-slide-form');
+                    var slide_id = $form.find('.slide_id').val();
+                    var slider_id = $form.find('.slide_slider_id').val();
+                    
+                    $.ajax({
+                        type: 'POST',
+                        url: '?plugin=slider&action=deleteslide',
+                        data: {slide_id: slide_id, slider_id: slider_id},
+                        dataType: 'json',
+                        success: function(data, textStatus, jqXHR) {
+                            if(data.status=='ok') {
+                                $form.remove();
+                            } else if(data.status=='fail'){
+                                $.slider.message(data,{content: $form.find('.del-slide-result')});
+                            }
+                            
+
+                        },
+                        error: function(jqXHR, errorText) {
+                        }
+                    });
+                });
+        },
+
         
         saveHandler: function(form)
         {
@@ -162,24 +237,26 @@
                 }
             });
         },
-        message: function(data)
+        message: function(data, options)
         {
+            options = options || {};
+            
             if(data.status == 'ok') {
                 var mes = 'Сохранено';
                 if(data.data.message) {
                     mes = data.data.message;
-                    $('#form-result').css('color','green');
+                    (options.content || $('#form-result')).css('color','green');
                 }
-                $('#form-result').html('<i class="icon16 yes" style="vertical-align:middle"></i>'+mes);
+                (options.content || $('#form-result')).html('<i class="icon16 yes" style="vertical-align:middle"></i>'+mes);
             } else if(data.status == 'fail') {
                 var mes = 'Ошибка';
                 if(data.errors) {
                     mes = data.errors[0][0];
                 }
-                $('#form-result').html('<i class="icon16 no" style="vertical-align:middle"></i>'+mes);
-                $('#form-result').css('color','red');
+                (options.content || $('#form-result')).html('<i class="icon16 no" style="vertical-align:middle"></i>'+mes);
+                (options.content || $('#form-result')).css('color','red');
             }
-            $('#form-result').show();
+            (options.content || $('#form-result')).show();
             setTimeout('$("#form-result").hide()',5000);
         },
         /** Current hash */
@@ -230,13 +307,14 @@
             var self = this;
             
             
-            $('#slider-content').html('<div class="block triple-padded"><i class="icon16 loading"></i>Loading...</div>');
             
+            (options.content || $("#slider-content")).html('<div class="block triple-padded"><i class="icon16 loading"></i>Loading...</div>');
             return  $.get(url, function(result) {
                 if ((typeof options.check === 'undefined' || options.check) && self.random != r) {
                     // too late: user clicked something else.
                     return;
                 }
+                
                 (options.content || $("#slider-content")).removeClass('bordered-left').html(result);
                 if (typeof fn === 'function') {
                     fn.call(this);

@@ -1,11 +1,21 @@
-<form enctype="multipart/form-data" action="?plugin=slider&action=save">
-
+<form enctype="multipart/form-data" action="?plugin=slider&action=save" class="slider-slide-form">
+    {$wa->csrf()}
+    <input class="slide_id" type="hidden" name="slide[id]" value="{if isset($slide.id)}{$slide.id}{/if}"/>
+    <input class="slide_slider_id" type="hidden" name="slide[slider_id]" value="{$slider_id}"/>
+    <div class="field">
+        <div class="name">
+            Заголовок
+        </div>
+        <div class="value">
+            <input type="text" name="slide[title]" value="{if isset($slide.title)}{$slide.title}{/if}" />
+        </div>
+    </div>
     <div class="field">
         <div class="name">
             Ссылка
         </div>
         <div class="value">
-            <input type="text" name="file" />
+            <input type="text" name="slide[link]" value="{if isset($slide.link)}{$slide.link}{/if}" />
         </div>
     </div>
 
@@ -14,17 +24,22 @@
             Изображение
         </div>
         <div class="value">
-            <input type="file" name="file" />
+            <div class="preview">
+                {if isset($slide.img)}
+                <img src="{$wa_url}wa-data/public/shop/plugins/slider/images/{$slide.img}"/>
+                {/if}
+            </div>
+
+
+
+            <div class="block" style="overflow: hidden">
+                <a class="fileinput-button" href="javascript:void(0);">
+                    <i class="icon16 upload"></i>Выберите изображения<input class="fileupload" type="file" name="slide_img"><span class="slide-result"></span>
+                </a>
+            </div>
         </div>
     </div>
 
-    <div class="field">
-        <div class="value submit">
-            <input type="submit" value="Сохранить" class="button green">
-            <span style="display:none" id="plugins-settings-form-status">
-                <i class="icon16 yes" style="vertical-align:middle"></i> Saved
-            </span>
-        </div>
-    </div>
-
+    <a class="delete-slide-but" href="javascript:void(0);"><i class="icon16 delete"></i>Удалить слайд</a><span class="del-slide-result"></span>
+    <hr/>
 </form>

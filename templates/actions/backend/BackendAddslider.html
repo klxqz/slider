@@ -1,5 +1,11 @@
-<form id="form-add-slider" action="?plugin=slider&action=saveslider">
-    <input type="hidden" name="slider[id]" value="{$slider.id}" />
+<script src="{$wa_app_static_url}plugins/slider/js/vendors/nivo-slider/jquery.nivo.slider.pack.js" type="text/javascript"></script>
+
+
+
+
+<form id="form-add-slider" action="?plugin=slider&action=saveslider" method="POST">
+    <input id="slider_id" type="hidden" name="slider[id]" value="{$slider.id}" />
+
     <div class="field">
         <div class="name">Доступен</div>
         <div class="value">
@@ -7,7 +13,7 @@
                 <option {if $slider.enabled==0}selected="selected"{/if} value="0">Нет</option>
                 <option {if $slider.enabled==1}selected="selected"{/if} value="1">Да</option>
             </select>
-            
+
         </div>
     </div>
     <div class="field">
@@ -15,12 +21,34 @@
         <div class="value"><input type="text" name="slider[name]" value="{$slider.name}" class="long bold" /></div>
     </div>
 
+
+
+
+
+
+
+
     <div class="field">
         <div class="value submit">
             <input type="submit" value="Сохранить" class="button green">
             <span style="display:none" id="form-result">
-                
+
             </span>
         </div>
     </div>
 </form>
+
+<h2>Слайды:</h2>
+<div class="slider-slide-content">
+    {foreach from=$slides item=slide}
+    {include file="./BackendAddslide.html" slide=$slide slider_id=$slider.id}
+    {/foreach}       
+</div>
+
+<div class="field">
+    <div class="value submit">
+        <a class="add-slide-but" href="javascript:void(0);s">
+            <i class="icon16 add"></i>Добавить слайд
+        </a>
+    </div>
+</div>

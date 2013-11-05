@@ -7,7 +7,7 @@ return array(
     'vendor' => 903438,
     'version' => '1.0.0',
     'rights' => false,
-    'shop_settings' => true,
+    'shop_settings' => false,
     'handlers' => array(
         'backend_menu' => 'backendMenu',
     )
