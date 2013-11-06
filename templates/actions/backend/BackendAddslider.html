@@ -4,7 +4,7 @@
 
 
 <form id="form-add-slider" action="?plugin=slider&action=saveslider" method="POST">
-    <input id="slider_id" type="hidden" name="slider[id]" value="{$slider.id}" />
+    <input id="slider_id" type="hidden" name="slider[id]" value="{if isset($slider.id)}{$slider.id}{/if}" />
 
     <div class="field">
         <div class="name">Доступен</div>
@@ -19,6 +19,27 @@
     <div class="field">
         <div class="name">Название слайдера</div>
         <div class="value"><input type="text" name="slider[name]" value="{$slider.name}" class="long bold" /></div>
+    </div>
+    
+    
+    <div class="field">
+        <div class="name">Выравнивание слайдера по центру</div>
+        <div class="value">
+            <select name="slider[aligncenter]">
+                <option {if $slider.aligncenter=='1'}selected="selected"{/if} value="1">Да</option>
+                <option {if $slider.aligncenter=='0'}selected="selected"{/if} value="0">Нет</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="field">
+        <div class="name">Ширина слайдера</div>
+        <div class="value"><input type="text" name="slider[width]" value="{$slider.width}" class="long bold" /></div>
+    </div>
+    
+    <div class="field">
+        <div class="name">Высота слайдера</div>
+        <div class="value"><input type="text" name="slider[height]" value="{$slider.height}" class="long bold" /></div>
     </div>
     
     <div class="field">
@@ -189,7 +210,7 @@
 
 <div class="field">
     <div class="value submit">
-        <a class="add-slide-but" href="javascript:void(0);s">
+        <a class="add-slide-but" href="javascript:void(0);">
             <i class="icon16 add"></i>Добавить слайд
         </a>
     </div>

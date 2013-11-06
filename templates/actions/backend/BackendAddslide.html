@@ -1,4 +1,4 @@
-<form enctype="multipart/form-data" action="?plugin=slider&action=save" class="slider-slide-form">
+<form enctype="multipart/form-data" action="?plugin=slider&action=saveslide" class="slider-slide-form">
     {$wa->csrf()}
     <input class="slide_id" type="hidden" name="slide[id]" value="{if isset($slide.id)}{$slide.id}{/if}"/>
     <input class="slide_slider_id" type="hidden" name="slide[slider_id]" value="{$slider_id}"/>
@@ -40,6 +40,22 @@
         </div>
     </div>
 
-    <a class="delete-slide-but" href="javascript:void(0);"><i class="icon16 delete"></i>Удалить слайд</a><span class="del-slide-result"></span>
+
+    <div class="field">
+        <div class="value submit">
+            <a class="delete-slide-but" href="javascript:void(0);"><i class="icon16 delete"></i>Удалить слайд</a><span class="del-slide-result"></span>
+        </div>
+    </div>
+
+
+    <div class="field">
+        <div class="value submit">
+            <input type="submit" value="Сохранить" class="button green">
+            <span style="display:none" class="form-result">
+
+            </span>
+        </div>
+    </div>
+
     <hr/>
 </form>

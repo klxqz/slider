@@ -5,30 +5,27 @@
                 <th class="min-width">
                     <input type="checkbox" class="slider-select-all">
                 </th>
-                <th>
-                    Название
-                </th>
-                <th class="short align-right">
-
-                </th>
-                <th class="short align-right">
-
-                </th>
+          
+                <th>Название</th>
+                <th>Доступен</th>
+                <th>Код для вставки</th>
+             
             </tr>
         </tbody>
 
         {foreach from=$sliders item=slider}
         <tr>
             <td class="min-width">
-                <input type="checkbox" name="slider_ids[]" value="{$slider.id}">
+                <input class="select-slider-checkbox" type="checkbox" name="slider_ids[]" value="{$slider.id}">
             </td>
+     
             <td>
                 <a href="#/addslider/{$slider.id}/">{$slider.name}</a>
             </td>
-            <td class="short nowrap align-right"><span>$10...$20</span></td>
-            <td class="short nowrap align-right">
-                <span><span class="gray">∞</span></span>
-            </td>
+            <td>{if $slider.enabled}Да{else}Нет{/if}</td>
+            <td>{ldelim}shopSliderPlugin::display({$slider.id}){rdelim}</td>
+             
+  
         </tr>
         {/foreach}
 

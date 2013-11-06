@@ -24,6 +24,9 @@ class shopSliderPluginBackendAddsliderAction extends waViewAction {
     protected $default = array(
         'enabled' => '1',
         'name' => 'Новый слайдер',
+        'aligncenter' => '1',
+        'width' => '0',
+        'height' => '0',
         'theme' => 'default',
         'effect' => 'random',
         'slices' => '15',
@@ -32,14 +35,14 @@ class shopSliderPluginBackendAddsliderAction extends waViewAction {
         'animSpeed' => '500',
         'pauseTime' => '3000',
         'startSlide' => '0',
-        'directionNav' => 'true',
-        'controlNav' => 'true',
-        'controlNavThumbs' => 'false',
-        'pauseOnHover' => 'true',
-        'manualAdvance' => 'false',
+        'directionNav' => '1',
+        'controlNav' => '1',
+        'controlNavThumbs' => '0',
+        'pauseOnHover' => '1',
+        'manualAdvance' => '0',
         'prevText' => 'Вперед',
         'nextText' => 'Назад',
-        'randomStart' => 'false',
+        'randomStart' => '0',
     );
 
     public function execute() {

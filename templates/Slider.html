@@ -1,23 +1,19 @@
-<link rel="stylesheet" href="{$wa_app_static_url}plugins/slider/js/vendors/nivo-slider//themes/default/default.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="{$wa_app_static_url}plugins/slider/js/vendors/nivo-slider//themes/light/light.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="{$wa_app_static_url}plugins/slider/js/vendors/nivo-slider//themes/dark/dark.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="{$wa_app_static_url}plugins/slider/js/vendors/nivo-slider//themes/bar/bar.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="{$wa_app_static_url}plugins/slider/js/vendors/nivo-slider/themes/default/default.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="{$wa_app_static_url}plugins/slider/js/vendors/nivo-slider/themes/light/light.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="{$wa_app_static_url}plugins/slider/js/vendors/nivo-slider/themes/dark/dark.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="{$wa_app_static_url}plugins/slider/js/vendors/nivo-slider/themes/bar/bar.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="{$wa_app_static_url}plugins/slider/js/vendors/nivo-slider/nivo-slider.css" type="text/css" media="screen" />
 
 
 <script src="{$wa_app_static_url}plugins/slider/js/vendors/nivo-slider/jquery.nivo.slider.pack.js" type="text/javascript"></script>
 
-<div class="slider-wrapper theme-default">
-    <div id="slider" class="nivoSlider" style="width: 400px; height: 400px;margin: 0 auto">
-
+<div class="slider-wrapper theme-{$slider.theme}" style="{if $slider.width}width: {$slider.width}px;{/if} {if $slider.height}height: {$slider.height}px;{/if} {if $slider.aligncenter}margin: 0 auto;{/if}">
+    <div id="slider" class="nivoSlider" >
         {foreach from=$slides item=slide}
-        <img src="{$wa_url}wa-data/public/shop/plugins/slider/images/{$slide.img}" alt="" title="{$slide.title}" />
+        {if $slide.link}<a href="{$slide.link}">{/if}
+            <img src="{$wa_url}wa-data/public/shop/plugins/slider/images/{$slide.img}" alt="{$slide.title}" title="{$slide.title}" />
+        {if $slide.link}</a>{/if}
         {/foreach}
-
-
-    </div>
-    <div id="htmlcaption" class="nivo-html-caption">
-        <strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>. 
     </div>
 </div>
 

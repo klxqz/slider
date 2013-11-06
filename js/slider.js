@@ -129,6 +129,17 @@
         defaultAction: function() {
             this.load('?plugin=slider&action=sliders',function(){
                 $.slider.deleteSlidersInit();
+                $.slider.selectAllInit();
+            });
+        },
+        
+        selectAllInit: function() {
+            $('.slider-select-all').click(function(){
+                if($(this).attr('checked')) {
+                    $('.select-slider-checkbox').attr('checked','checked');
+                } else {
+                    $('.select-slider-checkbox').removeAttr('checked');
+                }
             });
         },
         addsliderAction: function(id) {
@@ -144,6 +155,10 @@
                 $('.add-slide-but').click($.slider.addSlide);
                 $.slider.fileUploadInit();
                 $.slider.deleteSlideInit();
+                $('.slider-slide-form').submit(function() {
+                    $.slider.saveSlideHandler(this);
+                    return false;
+                });
             }); 
         },
         
@@ -158,21 +173,24 @@
                 $('.slider-slide-content').append(result);
                 $.slider.fileUploadInit();
                 $.slider.deleteSlideInit();
-                
+
+                $('.slider-slide-form').submit(function() {
+                    $.slider.saveSlideHandler(this);
+                    return false;
+                });
             });
         },
         
         fileUploadInit: function()
         {
             $('.fileupload').fileupload({
-                    url: '?plugin=slider&action=saveslideimage',
+                    url: '?plugin=slider&action=saveslide',
                     dataType: 'json',
                 
                     done: function (e, data) {  
                         $(this).parent().find('.slide-result').html('');                       
                         $('.loading').remove();
                         if(data.result.data) {
-                            console.log(data.result.data);
                             $(this).closest('.value').find(".preview").html('<img src="'+data.result.data.preview+'" />');
                             if(data.result.data.id) {
                                 $(this).closest('.slider-slide-form').find(".slide_id").val(data.result.data.id);
@@ -219,12 +237,11 @@
             $('.delete-slide-but').click(function(){
                     var $form = $(this).closest('.slider-slide-form');
                     var slide_id = $form.find('.slide_id').val();
-                    var slider_id = $form.find('.slide_slider_id').val();
                     
                     $.ajax({
                         type: 'POST',
                         url: '?plugin=slider&action=deleteslide',
-                        data: {slide_id: slide_id, slider_id: slider_id},
+                        data: {slide_id: slide_id},
                         dataType: 'json',
                         success: function(data, textStatus, jqXHR) {
                             if(data.status=='ok') {
@@ -239,7 +256,27 @@
                 });
         },
 
-        
+        saveSlideHandler: function(form)
+        {
+            var $form = $(form);
+            $.ajax({
+                type: 'POST',
+                url: $form.attr('action'),
+                data: $form.serializeArray(),
+                iframe: true,
+                dataType: 'json',
+                success: function(data, textStatus, jqXHR) {
+                    $.slider.message(data,{content: $form.find('.form-result')});
+                    if(data.data && data.data.id) {
+                        $form.find('.slide_id').val(data.data.id);
+                    }
+                    
+
+                },
+                error: function(jqXHR, errorText) {
+                }
+            });
+        },
         saveHandler: function(form)
         {
             var $form = $(form);
