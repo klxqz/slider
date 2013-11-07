@@ -10,12 +10,20 @@ class shopSliderSlideModel extends waModel
         return $this->query($sql)->fetchAll($key, $normalize);
     }
     
+    public function getSlidersSlide($ids, $key = null, $normalize = false)
+    {
+        foreach($ids as &$id) {
+            $id = $this->escape($id);
+        }
+        $sql = "SELECT * FROM {$this->table} WHERE slider_id IN(".implode(',',$ids).")";
+        return $this->query($sql)->fetchAll($key, $normalize);
+    }
+    
     public function deleteList($ids = array())
     {
         foreach($ids as &$id) {
             $id = $this->escape($id);
         }
-        
         $sql = "DELETE FROM {$this->table} WHERE slider_id IN(".implode(',',$ids).")";
         return $this->query($sql);
     }

@@ -13,9 +13,7 @@ class shopSliderPluginBackendSavesliderController extends waJsonController {
             $this->response['id'] = $id;
         }
 
-        
         $this->response['message'] = 'OK';
-        //$this->setError('ошибка');
     }
 
 }

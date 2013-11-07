@@ -56,11 +56,8 @@ class shopSliderPluginBackendAddsliderAction extends waViewAction {
         } else {
             $slider = $this->default;
         }
-
-
         $this->view->assign('slider', $slider);
-        $this->view->assign('slides', $slides);
-        
+        $this->view->assign('slides', $slides);  
         $this->view->assign('effect_params', $this->effect_params);
     }
 

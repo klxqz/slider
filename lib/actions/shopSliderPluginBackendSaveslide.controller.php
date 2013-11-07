@@ -35,9 +35,7 @@ class shopSliderPluginBackendSaveslideController extends waJsonController {
             $this->response['id'] = $lastInsertId;
         }
 
-
         $this->response['message'] = 'OK';
-        //$this->setError('ошибка');
     }
     
     protected function uniqueName($path) 
