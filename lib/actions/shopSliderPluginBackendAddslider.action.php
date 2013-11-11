@@ -47,11 +47,11 @@ class shopSliderPluginBackendAddsliderAction extends waViewAction {
 
     public function execute() {
         $id = waRequest::get('id');
-        $slider_model = new shopSliderModel();
+        $slider_model = new shopSliderPluginModel();
         $slider = $slider_model->getById($id);
         $slides = array();
         if ($slider) {
-            $slide_model = new shopSliderSlideModel();
+            $slide_model = new shopSliderPluginSlidesModel();
             $slides = $slide_model->getByField('slider_id', $slider['id'], true);
         } else {
             $slider = $this->default;

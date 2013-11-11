@@ -1,8 +1,8 @@
 <?php
 
-class shopSliderSlideModel extends waModel
+class shopSliderPluginSlidesModel extends waModel
 {
-    protected $table = 'shop_slider_slide';
+    protected $table = 'shop_slider_slides';
     
     public function getAll($key = null, $normalize = false)
     {

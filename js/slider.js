@@ -33,12 +33,7 @@
                 this.dispatch();
             } else {
                 $.wa.setHash(hash);
-            }
-            this.lastView = $.storage.get('shop/customers/lastview') || {
-                title: '',
-                hash: ''
-            };
-            
+            }            
             
         },
         // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

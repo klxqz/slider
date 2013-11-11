@@ -4,7 +4,7 @@ class shopSliderPluginBackendSavesliderController extends waJsonController {
 
     public function execute() {
         $slider_post = waRequest::post('slider');
-        $slider_model = new shopSliderModel();
+        $slider_model = new shopSliderPluginModel();
 
         if (isset($slider_post['id']) && $slider_post['id']) {
             $slider_model->updateById($slider_post['id'], $slider_post);

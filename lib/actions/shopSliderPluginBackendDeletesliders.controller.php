@@ -4,8 +4,8 @@ class shopSliderPluginBackendDeleteslidersController extends waJsonController {
 
     public function execute() {
         $slider_ids = waRequest::post('slider_ids',array());
-        $slider_model = new shopSliderModel();
-        $slide_model = new shopSliderSlideModel();
+        $slider_model = new shopSliderPluginModel();
+        $slide_model = new shopSliderPluginSlidesModel();
 
         if($slider_ids) {
             $slides = $slide_model->getSlidersSlide($slider_ids);

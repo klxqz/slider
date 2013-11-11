@@ -28,7 +28,7 @@ return array(
         ),
     ),
     
-    'shop_slider_slide' => array(
+    'shop_slider_slides' => array(
         'id' => array('int', 11, 'null' => 0, 'autoincrement' => 1),
         'slider_id' => array('varchar', 255, 'null' => 0, 'default' => ''),
         'title' => array('varchar', 255, 'null' => 0, 'default' => ''),

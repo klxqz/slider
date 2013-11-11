@@ -16,10 +16,10 @@ class shopSliderPlugin extends shopPlugin {
         if ($plugin->getSettings('status')) {
             $view = wa()->getView();
 
-            $slider_model = new shopSliderModel();
+            $slider_model = new shopSliderPluginModel();
             $slider = $slider_model->getById($slider_id);
             if ($slider['enabled']) {
-                $slide_model = new shopSliderSlideModel();
+                $slide_model = new shopSliderPluginSlidesModel();
                 $slides = $slide_model->getByField('slider_id', $slider_id, true);
 
                 $view->assign('slider', $slider);

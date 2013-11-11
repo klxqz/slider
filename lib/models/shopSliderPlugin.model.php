@@ -1,6 +1,6 @@
 <?php
 
-class shopSliderModel extends waModel
+class shopSliderPluginModel extends waModel
 {
     protected $table = 'shop_slider';
     
