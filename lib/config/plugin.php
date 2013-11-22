@@ -1,10 +1,14 @@
 <?php
 
+/**
+ * @author Коробонв Николай wa-plugins.ru <support@wa-plugins.ru>
+ * @link http://wa-plugins.ru/
+ */
 return array(
     'name' => 'Слайдер',
     'description' => 'Позволяет создать сколько угодно слайдеров',
     'img' => 'img/slider.png',
-    'vendor' => 903438,
+    'vendor' => '985310',
     'version' => '1.0.0',
     'rights' => false,
     'shop_settings' => false,

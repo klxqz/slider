@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @author Коробонв Николай wa-plugins.ru <support@wa-plugins.ru>
+ * @link http://wa-plugins.ru/
+ */
 class shopSliderPluginBackendAddsliderAction extends waViewAction {
 
     protected $effect_params = array(
@@ -20,7 +24,6 @@ class shopSliderPluginBackendAddsliderAction extends waViewAction {
         'boxRainGrow',
         'boxRainGrowReverse',
     );
-    
     protected $default = array(
         'enabled' => '1',
         'name' => 'Новый слайдер',
@@ -57,7 +60,7 @@ class shopSliderPluginBackendAddsliderAction extends waViewAction {
             $slider = $this->default;
         }
         $this->view->assign('slider', $slider);
-        $this->view->assign('slides', $slides);  
+        $this->view->assign('slides', $slides);
         $this->view->assign('effect_params', $this->effect_params);
     }
 

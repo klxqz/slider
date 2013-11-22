@@ -20,7 +20,7 @@
             </td>
      
             <td>
-                <a href="#/addslider/{$slider.id}/">{$slider.name}</a>
+                <a href="#/addslider/{$slider.id}/">{$slider.name|escape}</a>
             </td>
             <td>{if $slider.enabled}Да{else}Нет{/if}</td>
             <td>{ldelim}shopSliderPlugin::display({$slider.id}){rdelim}</td>

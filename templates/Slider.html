@@ -1,17 +1,15 @@
-<link rel="stylesheet" href="{$wa_app_static_url}plugins/slider/js/vendors/nivo-slider/themes/default/default.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="{$wa_app_static_url}plugins/slider/js/vendors/nivo-slider/themes/light/light.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="{$wa_app_static_url}plugins/slider/js/vendors/nivo-slider/themes/dark/dark.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="{$wa_app_static_url}plugins/slider/js/vendors/nivo-slider/themes/bar/bar.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="{$wa_app_static_url}plugins/slider/js/vendors/nivo-slider/themes/{$slider.theme|escape}/{$slider.theme|escape}.css" type="text/css" media="screen" />
+
 <link rel="stylesheet" href="{$wa_app_static_url}plugins/slider/js/vendors/nivo-slider/nivo-slider.css" type="text/css" media="screen" />
 
 
 <script src="{$wa_app_static_url}plugins/slider/js/vendors/nivo-slider/jquery.nivo.slider.pack.js" type="text/javascript"></script>
 
-<div class="slider-wrapper theme-{$slider.theme}" style="{if $slider.width}width: {$slider.width}px;{/if} {if $slider.height}height: {$slider.height}px;{/if} {if $slider.aligncenter}margin: 0 auto;{/if}">
+<div class="slider-wrapper theme-{$slider.theme|escape}" style="{if $slider.width}width: {$slider.width|escape}px;{/if} {if $slider.height}height: {$slider.height|escape}px;{/if} {if $slider.aligncenter}margin: 0 auto;{/if}">
     <div id="slider" class="nivoSlider" >
         {foreach from=$slides item=slide}
-        {if $slide.link}<a href="{$slide.link}">{/if}
-            <img src="{$wa_url}wa-data/public/shop/plugins/slider/images/{$slide.img}" alt="{$slide.title}" title="{$slide.title}" />
+        {if $slide.link}<a href="{$slide.link|escape}">{/if}
+            <img src="{$wa_url}wa-data/public/shop/plugins/slider/images/{$slide.img}" alt="{$slide.title|escape}" title="{$slide.title|escape}" />
         {if $slide.link}</a>{/if}
         {/foreach}
     </div>
@@ -24,21 +22,21 @@
     $(document).ready(function() {
         $('#slider').nivoSlider(
                 {
-                    effect: '{$slider.effect}',
-                    slices: {$slider.slices},
-                    boxCols: {$slider.boxCols},
-                    boxRows: {$slider.boxRows}, 
-                    animSpeed: {$slider.animSpeed},
-                    pauseTime: {$slider.pauseTime},
-                    startSlide: {$slider.startSlide},
-                    directionNav: {$slider.directionNav},
-                    controlNav: {$slider.controlNav},
-                    controlNavThumbs: {$slider.controlNavThumbs},
-                    pauseOnHover: {$slider.pauseOnHover},
-                    manualAdvance: {$slider.manualAdvance},
-                    prevText: '{$slider.prevText}',
-                    nextText: '{$slider.nextText}',
-                    randomStart: {$slider.randomStart},
+                    effect: '{$slider.effect|escape}',
+                    slices: {$slider.slices|escape},
+                    boxCols: {$slider.boxCols|escape},
+                    boxRows: {$slider.boxRows|escape}, 
+                    animSpeed: {$slider.animSpeed|escape},
+                    pauseTime: {$slider.pauseTime|escape},
+                    startSlide: {$slider.startSlide|escape},
+                    directionNav: {$slider.directionNav|escape},
+                    controlNav: {$slider.controlNav|escape},
+                    controlNavThumbs: {$slider.controlNavThumbs|escape},
+                    pauseOnHover: {$slider.pauseOnHover|escape},
+                    manualAdvance: {$slider.manualAdvance|escape},
+                    prevText: '{$slider.prevText|escape}',
+                    nextText: '{$slider.nextText|escape}',
+                    randomStart: {$slider.randomStart|escape},
                 });
     }
     );

@@ -7,7 +7,7 @@
             Заголовок
         </div>
         <div class="value">
-            <input type="text" name="slide[title]" value="{if isset($slide.title)}{$slide.title}{/if}" />
+            <input type="text" name="slide[title]" value="{if isset($slide.title)}{$slide.title|escape}{/if}" />
         </div>
     </div>
     <div class="field">
@@ -15,7 +15,7 @@
             Ссылка
         </div>
         <div class="value">
-            <input type="text" name="slide[link]" value="{if isset($slide.link)}{$slide.link}{/if}" />
+            <input type="text" name="slide[link]" value="{if isset($slide.link)}{$slide.link|escape}{/if}" />
         </div>
     </div>
 

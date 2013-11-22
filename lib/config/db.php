@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * @author Коробонв Николай wa-plugins.ru <support@wa-plugins.ru>
+ * @link http://wa-plugins.ru/
+ */
 return array(
     'shop_slider' => array(
         'id' => array('int', 11, 'null' => 0, 'autoincrement' => 1),
@@ -27,7 +32,6 @@ return array(
             'PRIMARY' => array('id'),
         ),
     ),
-    
     'shop_slider_slides' => array(
         'id' => array('int', 11, 'null' => 0, 'autoincrement' => 1),
         'slider_id' => array('varchar', 255, 'null' => 0, 'default' => ''),

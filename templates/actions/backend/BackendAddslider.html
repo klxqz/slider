@@ -13,7 +13,7 @@
     </div>
     <div class="field">
         <div class="name">Название слайдера</div>
-        <div class="value"><input type="text" name="slider[name]" value="{$slider.name}" class="long bold" /></div>
+        <div class="value"><input type="text" name="slider[name]" value="{$slider.name|escape}" class="long bold" /></div>
     </div>
     
     
@@ -29,12 +29,12 @@
     
     <div class="field">
         <div class="name">Ширина слайдера</div>
-        <div class="value"><input type="text" name="slider[width]" value="{$slider.width}" class="long bold" /></div>
+        <div class="value"><input type="text" name="slider[width]" value="{$slider.width|escape}" class="long bold" /></div>
     </div>
     
     <div class="field">
         <div class="name">Высота слайдера</div>
-        <div class="value"><input type="text" name="slider[height]" value="{$slider.height}" class="long bold" /></div>
+        <div class="value"><input type="text" name="slider[height]" value="{$slider.height|escape}" class="long bold" /></div>
     </div>
     
     <div class="field">
@@ -54,7 +54,7 @@
         <div class="value">
             <select name="slider[effect]">
                 {foreach from = $effect_params item = effect_param}
-                <option {if $slider.effect==$effect_param}selected="selected"{/if} value="{$effect_param}">{$effect_param}</option>
+                <option {if $slider.effect==$effect_param}selected="selected"{/if} value="{$effect_param|escape}">{$effect_param}</option>
                 {/foreach}
             </select>
         </div>
@@ -63,42 +63,42 @@
     <div class="field">
         <div class="name">Количество ломтиков при анимации</div>
         <div class="value">
-            <input name="slider[slices]" value="{$slider.slices}"/>
+            <input name="slider[slices]" value="{$slider.slices|escape}"/>
         </div>
     </div>
     
     <div class="field">
         <div class="name">Количество столбцов при анимации</div>
         <div class="value">
-            <input name="slider[boxCols]" value="{$slider.boxCols}"/>
+            <input name="slider[boxCols]" value="{$slider.boxCols|escape}"/>
         </div>
     </div>
     
     <div class="field">
         <div class="name">Количество строк при анимации</div>
         <div class="value">
-            <input name="slider[boxRows]" value="{$slider.boxRows}"/>
+            <input name="slider[boxRows]" value="{$slider.boxRows|escape}"/>
         </div>
     </div>
     
     <div class="field">
         <div class="name">Скорость анимации</div>
         <div class="value">
-            <input name="slider[animSpeed]" value="{$slider.animSpeed}"/>
+            <input name="slider[animSpeed]" value="{$slider.animSpeed|escape}"/>
         </div>
     </div>
     
     <div class="field">
         <div class="name">Количество времени на показ слайда</div>
         <div class="value">
-            <input name="slider[pauseTime]" value="{$slider.pauseTime}"/>
+            <input name="slider[pauseTime]" value="{$slider.pauseTime|escape}"/>
         </div>
     </div>
     
     <div class="field">
         <div class="name">Номер слайда, с которого начинается пока</div>
         <div class="value">
-            <input name="slider[startSlide]" value="{$slider.startSlide}"/>
+            <input name="slider[startSlide]" value="{$slider.startSlide|escape}"/>
         </div>
     </div>
 
@@ -160,14 +160,14 @@
     <div class="field">
         <div class="name">Текст кнопки "назад"</div>
         <div class="value">
-            <input name="slider[prevText]" value="{$slider.prevText}"/>
+            <input name="slider[prevText]" value="{$slider.prevText|escape}"/>
         </div>
     </div>
     
     <div class="field">
         <div class="name">Текст кнопки "вперед"</div>
         <div class="value">
-            <input name="slider[nextText]" value="{$slider.nextText}"/>
+            <input name="slider[nextText]" value="{$slider.nextText|escape}"/>
         </div>
     </div>
     
@@ -181,7 +181,7 @@
             </select>
         </div>
     </div>
-
+    
 
 
 
