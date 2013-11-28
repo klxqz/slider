@@ -6,7 +6,7 @@
 <script src="{$wa_app_static_url}plugins/slider/js/vendors/nivo-slider/jquery.nivo.slider.pack.js" type="text/javascript"></script>
 
 <div class="slider-wrapper theme-{$slider.theme|escape}" style="{if $slider.width}width: {$slider.width|escape}px;{/if} {if $slider.height}height: {$slider.height|escape}px;{/if} {if $slider.aligncenter}margin: 0 auto;{/if}">
-    <div id="slider" class="nivoSlider" >
+    <div id="slider-{$slider.id}" class="nivoSlider" >
         {foreach from=$slides item=slide}
         {if $slide.link}<a href="{$slide.link|escape}">{/if}
             <img src="{$wa_url}wa-data/public/shop/plugins/slider/images/{$slide.img}" alt="{$slide.title|escape}" title="{$slide.title|escape}" />
@@ -20,7 +20,7 @@
 <script type="text/javascript">
 
     $(document).ready(function() {
-        $('#slider').nivoSlider(
+        $('#slider-{$slider.id}').nivoSlider(
                 {
                     effect: '{$slider.effect|escape}',
                     slices: {$slider.slices|escape},
