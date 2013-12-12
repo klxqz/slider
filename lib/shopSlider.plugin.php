@@ -30,6 +30,7 @@ class shopSliderPlugin extends shopPlugin {
                 $view->assign('slides', $slides);
                 $template_path = wa()->getAppPath('plugins/slider/templates/Slider.html', 'shop');
                 $html = $view->fetch($template_path);
+                waSystem::popActivePlugin();
                 return $html;
             }
         }
