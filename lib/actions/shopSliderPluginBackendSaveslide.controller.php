@@ -16,7 +16,7 @@ class shopSliderPluginBackendSaveslideController extends waJsonController {
         $file = waRequest::file('slide_img');
         if ($file->uploaded()) {
             $image_path = wa()->getDataPath('plugins/slider/images/', 'shop');
-            $name = $this->uniqueName($image_path);
+            $name = $this->uniqueName($image_path, $file->extension);
             try {
                 $file->waImage()->save($image_path . $name);
                 $this->response['preview'] = wa()->getDataUrl('plugins/slider/images/' . $name, true, 'shop');
@@ -42,7 +42,7 @@ class shopSliderPluginBackendSaveslideController extends waJsonController {
         $this->response['message'] = 'OK';
     }
 
-    protected function uniqueName($path) {
+    protected function uniqueName($path, $file_extension) {
         $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
         do {
             $name = '';
@@ -50,7 +50,7 @@ class shopSliderPluginBackendSaveslideController extends waJsonController {
                 $n = rand(0, strlen($alphabet) - 1);
                 $name .= $alphabet{$n};
             }
-            $name .= '.jpg';
+            $name .= '.' . $file_extension;
         } while (file_exists($path . $name));
 
         return $name;

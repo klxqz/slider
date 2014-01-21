@@ -9,7 +9,7 @@ return array(
     'description' => 'Позволяет создать сколько угодно слайдеров',
     'img' => 'img/slider.png',
     'vendor' => '985310',
-    'version' => '1.0.1',
+    'version' => '1.0.2',
     'rights' => false,
     'shop_settings' => false,
     'handlers' => array(
